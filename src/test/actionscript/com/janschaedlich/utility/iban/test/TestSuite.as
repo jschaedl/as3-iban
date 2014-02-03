@@ -4,6 +4,11 @@ package com.janschaedlich.utility.iban.test
     [RunWith("org.flexunit.runners.Suite")]
     public class TestSuite
     {
-        //public var ibanTest:IbanTest;
+		public var ibanTest:IbanTest;
+		
+		public function TestSuite() 
+		{
+			
+		}
     }
 }
