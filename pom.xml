@@ -33,6 +33,7 @@
 							<flashplayerCommand>${flex.flashPlayer.command}</flashplayerCommand>
 						</launcher>
 					</testRunner>
+					<testTimeout>60000</testTimeout>
 					<coverage>true</coverage>
 					<headlessServer>true</headlessServer>
 					<verboseStacktraces>true</verboseStacktraces>
@@ -76,7 +77,7 @@
 			<artifactId>flex-framework</artifactId>
 			<version>${flex.sdk.version}</version>
 			<type>pom</type>
-		</dependency>
+		</dependency>	
 		<!-- Based on testing library dependency specified, FlexMojos will know 
 			how to test your application -->
 		<dependency>
@@ -85,7 +86,7 @@
 			<version>4.0-rc-1</version>
 			<type>swc</type>
 			<scope>test</scope>
-		</dependency>
+		</dependency>  
 	</dependencies>
 
 	<!-- Ideally this would go into your ~/.m2/settings.xml file -->
@@ -100,11 +101,25 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>flex-maven-repository</id>
+			<url>https://code.google.com/p/flex-maven-repo/source/browse</url>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>flex-mojos-plugin-repository</id>
 			<url>http://repository.sonatype.org/content/groups/flexgroup</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>flex-maven-repository</id>
+			<url>https://code.google.com/p/flex-maven-repo/source/browse/hg</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>

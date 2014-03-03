@@ -1,7 +1,10 @@
 package com.janschaedlich.utility.iban.test
 {
     import com.janschaedlich.utility.iban.Iban;
+    import com.janschaedlich.utility.iban.util.BigInt;
+    
     import mx.collections.ArrayCollection;
+    
     import org.flexunit.asserts.assertEquals;
     import org.flexunit.asserts.assertFalse;
     import org.flexunit.asserts.assertTrue;
@@ -75,10 +78,58 @@ package com.janschaedlich.utility.iban.test
             var iban:Iban = new Iban('DE35 83878387 93878736 78');
             assertEquals('DE35 8387 8387 9387 8736 78', iban.format());
         }
-    /*[Test]
-    public function test():void
-    {
-    
-    }*/
+		
+		/*
+		[Test]
+		public function testIsLocalCodeValid():void
+		{
+			var iban:Iban = new Iban('DE35 83878387 93878736 78');
+			assertTrue(iban.isLocalCodeValid(), 'LocaleCode DE should be valid');
+		}
+		
+		[Test]
+		public function testIsFormatValid():void
+		{
+			var iban:Iban = new Iban('DE35 8387 8387 9387 8736 78');
+			assertTrue(iban.isFormatValid());
+			
+			iban = new Iban('DE35 8387 83 8736 78');
+			assertFalse(iban.isFormatValid());
+		}
+		*/
+		[Test]
+		public function testIsChecksumValid():void
+		{
+			var iban:Iban = new Iban('DE35500105175403732019');
+			assertTrue(iban.isChecksumValid());
+		}
+		
+		[Test]
+		public function testGetNumericRepresentation():void
+		{
+			var iban:Iban = new Iban('DE35 8387 8387 9387 8736 78');
+			var letterRepresentationDE:String = 'DE';
+			var letterRepresentationNL:String = 'NL';
+			assertEquals('1314', iban.getNumericRepresentation(letterRepresentationDE));
+			assertEquals('2321', iban.getNumericRepresentation(letterRepresentationNL));
+		}
+		
+		[Test]
+		public function testGetNumericLocaleCode():void
+		{
+			var iban:Iban = new Iban('DE35 8387 8387 9387 8736 78');
+			var letterRepresentationDE:String = 'DE';
+			var letterRepresentationNL:String = 'NL';
+			assertEquals('1314', iban.getNumericLocaleCode(letterRepresentationDE));
+			assertEquals('2321', iban.getNumericLocaleCode(letterRepresentationNL));
+		}
+		
+		[Test]
+		public function testGetNumericAccountIdentification():void
+		{
+			var iban:Iban = new Iban('DE35 8387 8387 9387 8736 78');
+			var accountIdentification:String = iban.getAccountIdentification();
+			assertEquals('838783879387873678', iban.getNumericAccountIdentification(accountIdentification));
+		}
     }
 }
