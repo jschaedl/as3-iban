@@ -1,7 +1,6 @@
 language: objective-c
 before_script:
-  - curl 'http://download.macromedia.com/pub/flashplayer/updaters/10/flashplayer_10_sa_debug.app.zip' >> flashplayer.zip
-  - unzip flashplayer.zip
+  - sh getFpFromArchive.sh 'http://download.macromedia.com/pub/flashplayer/installers/archive/fp_11.7.700.225_archive.zip'
   - curl 'https://github.com/jschaedl/as3-crypto/blob/master/deploy/as3crypto.swc' >> as3-crypto.swc
   - mvn install:install-file -DgroupId=com.hurlant -DartifactId=as3-crypto -Dversion=1.0 -Dpackaging=swc -Dfile=lib/as3-crypto.swc
 script: mvn test -Dflex.flashPlayer.command=Flash\ Player\ Debugger.app/Contents/MacOS/Flash\ Player\ Debugger
