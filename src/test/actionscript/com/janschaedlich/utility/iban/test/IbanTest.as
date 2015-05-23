@@ -1,9 +1,7 @@
 package com.janschaedlich.utility.iban.test
 {
+    import com.janschaedlich.utility.iban.Constants;
     import com.janschaedlich.utility.iban.Iban;
-    import com.janschaedlich.utility.iban.util.BigInt;
-    
-    import mx.collections.ArrayCollection;
     
     import org.flexunit.asserts.assertEquals;
     import org.flexunit.asserts.assertFalse;
@@ -79,12 +77,18 @@ package com.janschaedlich.utility.iban.test
             assertEquals('DE35 8387 8387 9387 8736 78', iban.format());
         }
 		
-		/*
+		[Test]
+		public function testIsLengthValid():void
+		{
+			assertTrue(new Iban('DE3583878387938').isLengthValid());
+			assertFalse(new Iban('DE').isLengthValid());
+		}
+		
 		[Test]
 		public function testIsLocalCodeValid():void
 		{
-			var iban:Iban = new Iban('DE35 83878387 93878736 78');
-			assertTrue(iban.isLocalCodeValid(), 'LocaleCode DE should be valid');
+			var iban:Iban = new Iban('DE35 8387 8387 9387 8736 78');
+			assertTrue(iban.isLocalCodeValid());
 		}
 		
 		[Test]
@@ -96,13 +100,24 @@ package com.janschaedlich.utility.iban.test
 			iban = new Iban('DE35 8387 83 8736 78');
 			assertFalse(iban.isFormatValid());
 		}
-		*/
+		
 		[Test]
 		public function testIsChecksumValid():void
 		{
 			var iban:Iban = new Iban('DE35500105175403732019');
 			assertTrue(iban.isChecksumValid());
 		}
+		
+		[Test]
+		public function testValidate():void
+		{
+			assertTrue(new Iban('DE35500105175403732019').validate());
+			assertFalse(new Iban('DE').validate());
+			assertFalse(new Iban('XB35500105175403732019').validate());
+			assertFalse(new Iban('DE35 8387 83 8736 78').validate());
+			assertFalse(new Iban('DE10500105175403732019').validate());
+		}
+		
 		
 		[Test]
 		public function testGetNumericRepresentation():void

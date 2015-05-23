@@ -1,11 +1,10 @@
 package com.janschaedlich.utility.iban.error
 {
-    
-    public class InvalidArgumentError extends Error
+    public class IbanValueEmptyError extends Error
     {
-        public function InvalidArgumentError(message:String = "", id:int = 0)
+        public function IbanValueEmptyError(message:String = 'Iban value cannot be empty!')
         {
-            super(message, id);
+            super(message);
         }
     }
 }

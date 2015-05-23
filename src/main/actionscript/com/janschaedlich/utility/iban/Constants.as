@@ -70,9 +70,8 @@ package com.janschaedlich.utility.iban
 		public static function checkLocalCode(localeCode:String):Boolean
 		{
 			var item:Object = null;
-			for each (var i:int in ibanFormatMap) 
+			for each (item in ibanFormatMap) 
 			{	
-				item = ibanFormatMap.getItemAt(i);
 				if (localeCode == item.iso)
 					return true;
 			}
@@ -84,20 +83,21 @@ package com.janschaedlich.utility.iban
 			var item:Object = null;
 			var pattern:String = null;
 
-			for (var i:int = 0; i < Constants.ibanFormatMap.length; i++)  {		
-				item = Constants.ibanFormatMap.getItemAt(i);
-				
-				if (localeCode == item.iso) {
+			for each (item in ibanFormatMap)
+			{
+				if (localeCode == item.iso) 
+				{
 					pattern = item.format;
 					break;
 				}	
 			}
-			//return localeCode + ' ' + item.iso + ' ' + item.format + ' ' + accountIdentification;
 			
 			var regEx:RegExp = new RegExp(pattern, '');
 			var results:Array = accountIdentification.match(regEx);
-			//return accountIdentification.match(regEx);
-			return results is Array && results.length == 1/* && results[0] == accountIdentification*/;
+
+			return results is Array && 
+				results.length == 1 && 
+				results[0] == accountIdentification;
 		}
 	}
 }
