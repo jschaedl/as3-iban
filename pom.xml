@@ -30,7 +30,7 @@
 				<configuration>
 					<testRunner>
 						<launcher>
-							<flashplayerCommand>${flex.flashPlayer.command}</flashplayerCommand>
+							<flashplayerCommand>${flashPlayer.command}</flashplayerCommand>
 						</launcher>
 					</testRunner>
 					<testTimeout>60000</testTimeout>
