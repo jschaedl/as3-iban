@@ -8,5 +8,5 @@ before_script:
   # download as3-crypto library
   - curl 'https://github.com/jschaedl/as3-crypto/blob/master/deploy/as3crypto.swc' >> as3-crypto.swc
   # add as3-crypto library to local maven repository
-  - mvn install:install-file -DgroupId=com.hurlant -DartifactId=as3-crypto -Dversion=1.0 -Dpackaging=swc -Dfile=lib/as3-crypto.swc
+  - mvn install:install-file -DgroupId=com.hurlant -DartifactId=as3-crypto -Dversion=1.0 -Dpackaging=swc -Dfile=as3-crypto.swc
 script: mvn test -DflashPlayer.command=Flash\ Player\ Debugger.app/Contents/MacOS/Flash\ Player\ Debugger
