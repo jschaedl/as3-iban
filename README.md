@@ -1,6 +1,6 @@
-as3-iban
---------
-[![Build Status](https://travis-ci.org/jschaedl/as3-iban.svg)](https://travis-ci.org/jschaedl/as3-iban)
+# as3-iban
+
+A small Actionscript Library for validating international bank account numbers (IBAN).
 
 ### Release notes
 
@@ -13,4 +13,3 @@ as3-iban
 	* public function isFormatValid():Boolean:
 * fixed bug in Constant.checkLocalCode(localeCode:String)
 * added README
-* 
