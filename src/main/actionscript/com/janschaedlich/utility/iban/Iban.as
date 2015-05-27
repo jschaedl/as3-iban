@@ -87,16 +87,16 @@ package com.janschaedlich.utility.iban
 
 		public function isChecksumValid():Boolean
 		{
-			var localeCode:String=getLocaleCode();
-			var checksum:String=getChecksum();
-			var accountIdentification:String=getAccountIdentification();
-			var numericLocalCode:String=getNumericLocaleCode(localeCode);
-			var numericAccountIdentification:String=getNumericAccountIdentification(accountIdentification);
-			var invertedIban:String=numericAccountIdentification + numericLocalCode + checksum;
+			var localeCode:String = getLocaleCode();
+			var checksum:String = getChecksum();
+			var accountIdentification:String = getAccountIdentification();
+			var numericLocalCode:String = getNumericLocaleCode(localeCode);
+			var numericAccountIdentification:String = getNumericAccountIdentification(accountIdentification);
+			var invertedIban:String = numericAccountIdentification + numericLocalCode + checksum;
 
-			var iban:BigInteger=new BigInteger(invertedIban, 10);
-			var modulus:BigInteger=new BigInteger('97', 10);
-			var mod:BigInteger=iban.mod(modulus);
+			var iban:BigInteger = new BigInteger(invertedIban, 10);
+			var modulus:BigInteger = new BigInteger('97', 10);
+			var mod:BigInteger = iban.mod(modulus);
 			
 			return mod.toString(10) == '1';
 /*
@@ -120,18 +120,18 @@ package com.janschaedlich.utility.iban
 
 		public function getNumericRepresentation(letterRepresentation:String):String
 		{
-			var numericRepresentation:String='';
-			var splitted:Array=letterRepresentation.split("");
+			var numericRepresentation:String = '';
+			var splitted:Array = letterRepresentation.split("");
 			for (var i:int=0; i < splitted.length; i++)
 			{
-				var index:int=Constants.letterMapping.getItemIndex(splitted[i]);
+				var index:int = Constants.letterMapping.getItemIndex(splitted[i]);
 				if (index != -1)
 				{
-					numericRepresentation+=(index + 1 + 9).toString();
+					numericRepresentation += (index + 1 + 9).toString();
 				}
 				else
 				{
-					numericRepresentation+=splitted[i];
+					numericRepresentation += splitted[i];
 				}
 			}
 			return numericRepresentation;
