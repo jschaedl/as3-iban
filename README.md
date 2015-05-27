@@ -13,3 +13,4 @@ A small Actionscript Library for validating international bank account numbers (
 	* public function isFormatValid():Boolean:
 * fixed bug in Constant.checkLocalCode(localeCode:String)
 * added README
+* ...
