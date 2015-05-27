@@ -97,8 +97,15 @@ package com.janschaedlich.utility.iban
 			var iban:BigInteger=new BigInteger(invertedIban, 10);
 			var modulus:BigInteger=new BigInteger('97', 10);
 			var mod:BigInteger=iban.mod(modulus);
-
+			
 			return mod.toString(10) == '1';
+/*
+			var iban:BigInt = new BigInt(invertedIban);
+			var modulus:BigInt = new BigInt('97');
+			var mod:BigInt = BigInt.mod(iban, modulus);
+			
+			return mod.toString() == '1';
+*/
 		}
 
 		public function getNumericLocaleCode(localeCode:String):String
